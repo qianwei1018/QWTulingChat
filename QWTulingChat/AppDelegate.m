@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "MyTulingHeader.h"
+#import <SMS_SDK/SMSSDK.h>
 
 @interface AppDelegate ()
 
@@ -17,6 +19,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+//    [SMSSDK registerApp:SMSAppKey withSecret:SMSAppSecret];
+    
     return YES;
 }
 

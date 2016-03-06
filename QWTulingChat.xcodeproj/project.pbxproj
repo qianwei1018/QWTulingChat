@@ -40,6 +40,7 @@
 		7B5706F91C8A697C00EA7396 /* MainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainView.h; sourceTree = "<group>"; };
 		7B5706FA1C8A697C00EA7396 /* MainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainView.m; sourceTree = "<group>"; };
 		7B5707261C8B052400EA7396 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		7B5707281C8B0B3500EA7396 /* MyTulingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyTulingHeader.h; sourceTree = "<group>"; };
 		AD92A3FE611FEF65477DA68E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -90,6 +91,7 @@
 				7B11B2601C89A97500DBD1A0 /* AppDelegate.m */,
 				7B11B2621C89A97500DBD1A0 /* ViewController.h */,
 				7B11B2631C89A97500DBD1A0 /* ViewController.m */,
+				7B5707281C8B0B3500EA7396 /* MyTulingHeader.h */,
 				7B11B2651C89A97500DBD1A0 /* Main.storyboard */,
 				7B11B2681C89A97500DBD1A0 /* Assets.xcassets */,
 				7B11B26A1C89A97500DBD1A0 /* LaunchScreen.storyboard */,

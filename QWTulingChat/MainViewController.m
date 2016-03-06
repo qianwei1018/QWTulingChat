@@ -13,7 +13,8 @@
 /**
  *  图像
  */
-@property (weak, nonatomic) IBOutlet UIScrollView *pictureImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *pictureImageView;
+
 
 /**
  *  账号
@@ -34,8 +35,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    //scrollview 的编辑模式
-    self.pictureImageView.pagingEnabled = YES;
+    self.pictureImageView.layer.cornerRadius = self.pictureImageView.bounds.size.height/2;
+    self.pictureImageView.backgroundColor = [UIColor colorWithRed:1.000 green:0.462 blue:0.691 alpha:1.000];
     
     
     
@@ -83,6 +84,8 @@
  */
 - (IBAction)forgetPasswordBtn:(UIButton *)sender {
 }
+
+
 
 
 
