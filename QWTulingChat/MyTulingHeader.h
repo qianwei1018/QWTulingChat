@@ -14,6 +14,9 @@
 
 #define SMSAppSecret @"5cf33bbe4707c9e5f85e839121d295b7"
 
+#define SCREEN_WIDTH [[UIScreen mainScreen] bounds].size.width
+#define SCREEN_HEIGHT [[UIScreen mainScreen] bounds].size.height
+
 
 
 

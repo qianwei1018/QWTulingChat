@@ -35,10 +35,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.pictureImageView.layer.cornerRadius = self.pictureImageView.bounds.size.height/2;
+    self.pictureImageView.layer.cornerRadius = 40;  //设置图片圆角
+    
+    self.pictureImageView.layer.masksToBounds = YES;
     self.pictureImageView.backgroundColor = [UIColor colorWithRed:1.000 green:0.462 blue:0.691 alpha:1.000];
     
-    
+//    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
     
 }
 

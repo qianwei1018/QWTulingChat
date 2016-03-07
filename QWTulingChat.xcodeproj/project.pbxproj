@@ -18,6 +18,12 @@
 		7B5706F51C8A692C00EA7396 /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5706F41C8A692C00EA7396 /* Model.m */; };
 		7B5706FB1C8A697C00EA7396 /* MainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5706FA1C8A697C00EA7396 /* MainView.m */; };
 		7B5707271C8B052400EA7396 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 7B5707261C8B052400EA7396 /* Podfile */; };
+		7B7326551C8D739700232220 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7326541C8D739700232220 /* RegisterViewController.m */; };
+		7B7326581C8D73E100232220 /* RegisterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7326571C8D73E100232220 /* RegisterView.m */; };
+		7B73265B1C8D73F700232220 /* RegisterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B73265A1C8D73F700232220 /* RegisterModel.m */; };
+		7B7326601C8D78F000232220 /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B73265F1C8D78F000232220 /* ChatViewController.m */; };
+		7B7326631C8D791500232220 /* ChatView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7326621C8D791500232220 /* ChatView.m */; };
+		7B7326661C8D793000232220 /* ChatModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7326651C8D793000232220 /* ChatModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +47,18 @@
 		7B5706FA1C8A697C00EA7396 /* MainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainView.m; sourceTree = "<group>"; };
 		7B5707261C8B052400EA7396 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 		7B5707281C8B0B3500EA7396 /* MyTulingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyTulingHeader.h; sourceTree = "<group>"; };
+		7B7326531C8D739700232220 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
+		7B7326541C8D739700232220 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		7B7326561C8D73E100232220 /* RegisterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterView.h; sourceTree = "<group>"; };
+		7B7326571C8D73E100232220 /* RegisterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterView.m; sourceTree = "<group>"; };
+		7B7326591C8D73F700232220 /* RegisterModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterModel.h; sourceTree = "<group>"; };
+		7B73265A1C8D73F700232220 /* RegisterModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterModel.m; sourceTree = "<group>"; };
+		7B73265E1C8D78F000232220 /* ChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatViewController.h; sourceTree = "<group>"; };
+		7B73265F1C8D78F000232220 /* ChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatViewController.m; sourceTree = "<group>"; };
+		7B7326611C8D791500232220 /* ChatView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatView.h; sourceTree = "<group>"; };
+		7B7326621C8D791500232220 /* ChatView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatView.m; sourceTree = "<group>"; };
+		7B7326641C8D793000232220 /* ChatModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatModel.h; sourceTree = "<group>"; };
+		7B7326651C8D793000232220 /* ChatModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatModel.m; sourceTree = "<group>"; };
 		AD92A3FE611FEF65477DA68E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -86,16 +104,11 @@
 		7B11B25B1C89A97500DBD1A0 /* QWTulingChat */ = {
 			isa = PBXGroup;
 			children = (
-				7B5706F21C8A68EB00EA7396 /* Main */,
-				7B11B25F1C89A97500DBD1A0 /* AppDelegate.h */,
-				7B11B2601C89A97500DBD1A0 /* AppDelegate.m */,
-				7B11B2621C89A97500DBD1A0 /* ViewController.h */,
-				7B11B2631C89A97500DBD1A0 /* ViewController.m */,
-				7B5707281C8B0B3500EA7396 /* MyTulingHeader.h */,
-				7B11B2651C89A97500DBD1A0 /* Main.storyboard */,
-				7B11B2681C89A97500DBD1A0 /* Assets.xcassets */,
-				7B11B26A1C89A97500DBD1A0 /* LaunchScreen.storyboard */,
-				7B11B26D1C89A97500DBD1A0 /* Info.plist */,
+				7B7326511C8D424900232220 /* Main */,
+				7B5706F21C8A68EB00EA7396 /* Login */,
+				7B73265C1C8D73FE00232220 /* Register */,
+				7B73265D1C8D789F00232220 /* Chat */,
+				7B7326521C8D426C00232220 /* Other */,
 				7B11B25C1C89A97500DBD1A0 /* Supporting Files */,
 			);
 			path = QWTulingChat;
@@ -109,7 +122,7 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		7B5706F21C8A68EB00EA7396 /* Main */ = {
+		7B5706F21C8A68EB00EA7396 /* Login */ = {
 			isa = PBXGroup;
 			children = (
 				7B5706EF1C8A68D200EA7396 /* MainViewController.h */,
@@ -119,7 +132,56 @@
 				7B5706F91C8A697C00EA7396 /* MainView.h */,
 				7B5706FA1C8A697C00EA7396 /* MainView.m */,
 			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		7B7326511C8D424900232220 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				7B11B25F1C89A97500DBD1A0 /* AppDelegate.h */,
+				7B11B2601C89A97500DBD1A0 /* AppDelegate.m */,
+				7B11B2621C89A97500DBD1A0 /* ViewController.h */,
+				7B11B2631C89A97500DBD1A0 /* ViewController.m */,
+			);
 			name = Main;
+			sourceTree = "<group>";
+		};
+		7B7326521C8D426C00232220 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				7B5707281C8B0B3500EA7396 /* MyTulingHeader.h */,
+				7B11B2651C89A97500DBD1A0 /* Main.storyboard */,
+				7B11B2681C89A97500DBD1A0 /* Assets.xcassets */,
+				7B11B26A1C89A97500DBD1A0 /* LaunchScreen.storyboard */,
+				7B11B26D1C89A97500DBD1A0 /* Info.plist */,
+			);
+			name = Other;
+			sourceTree = "<group>";
+		};
+		7B73265C1C8D73FE00232220 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				7B7326531C8D739700232220 /* RegisterViewController.h */,
+				7B7326541C8D739700232220 /* RegisterViewController.m */,
+				7B7326561C8D73E100232220 /* RegisterView.h */,
+				7B7326571C8D73E100232220 /* RegisterView.m */,
+				7B7326591C8D73F700232220 /* RegisterModel.h */,
+				7B73265A1C8D73F700232220 /* RegisterModel.m */,
+			);
+			name = Register;
+			sourceTree = "<group>";
+		};
+		7B73265D1C8D789F00232220 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				7B73265E1C8D78F000232220 /* ChatViewController.h */,
+				7B73265F1C8D78F000232220 /* ChatViewController.m */,
+				7B7326611C8D791500232220 /* ChatView.h */,
+				7B7326621C8D791500232220 /* ChatView.m */,
+				7B7326641C8D793000232220 /* ChatModel.h */,
+				7B7326651C8D793000232220 /* ChatModel.m */,
+			);
+			name = Chat;
 			sourceTree = "<group>";
 		};
 		7F941CB9915CB1EDAF8A51A2 /* Pods */ = {
@@ -255,9 +317,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				7B11B2641C89A97500DBD1A0 /* ViewController.m in Sources */,
+				7B7326581C8D73E100232220 /* RegisterView.m in Sources */,
+				7B7326601C8D78F000232220 /* ChatViewController.m in Sources */,
+				7B7326661C8D793000232220 /* ChatModel.m in Sources */,
 				7B11B2611C89A97500DBD1A0 /* AppDelegate.m in Sources */,
 				7B11B25E1C89A97500DBD1A0 /* main.m in Sources */,
 				7B5706F11C8A68D200EA7396 /* MainViewController.m in Sources */,
+				7B7326551C8D739700232220 /* RegisterViewController.m in Sources */,
+				7B7326631C8D791500232220 /* ChatView.m in Sources */,
+				7B73265B1C8D73F700232220 /* RegisterModel.m in Sources */,
 				7B5706F51C8A692C00EA7396 /* Model.m in Sources */,
 				7B5706FB1C8A697C00EA7396 /* MainView.m in Sources */,
 			);
