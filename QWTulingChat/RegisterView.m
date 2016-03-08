@@ -8,7 +8,14 @@
 
 #import "RegisterView.h"
 
+
 @implementation RegisterView
+
+
+
+
+
+
 
 /*
 // Only override drawRect: if you perform custom drawing.

@@ -9,15 +9,37 @@
 #ifndef MyTulingHeader_h
 #define MyTulingHeader_h
 
-
+/**
+ *  短信APPkey  AppSecret
+ *
+ *  @return <#return value description#>
+ */
 #define SMSAppKey @"1013beeaf91cc"
-
 #define SMSAppSecret @"5cf33bbe4707c9e5f85e839121d295b7"
 
+/**
+ *  屏幕的大小
+ *
+ *  @return <#return value description#>
+ */
 #define SCREEN_WIDTH [[UIScreen mainScreen] bounds].size.width
 #define SCREEN_HEIGHT [[UIScreen mainScreen] bounds].size.height
 
+/**
+ *  pictureView 中的图片数量
+ *
+ *  @return <#return value description#>
+ */
+#define NUMBEROFPICTUREIMAGE 9 
 
+/**
+ *  正则表达式
+ *
+ *  @return <#return value description#>
+ */
+#define REGEX_USER_NAME @"^[A-Za-z][A-Za-z0-9_]{5,15}"
+#define REGEX_PASSWORD @"[A-Za-z0-9]{6,20}"
+#define REGEX_TELNUM @"^1[3|4|5|7|8][0-9]\\d{8}$"
 
 
 
