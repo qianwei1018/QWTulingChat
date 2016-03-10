@@ -161,11 +161,12 @@
 }
 
 /**
- *  注册提交
+ *  注册提交 （数据持久化）
  *
  *  @param sender <#sender description#>
  */
 - (IBAction)confirmSubmit:(UIButton *)sender {
+    NSLog(@"**************************");
     NSLog(@"检查是否注册成功！");
     flag = 0;
     //填写的数据
@@ -186,29 +187,37 @@
     }
     //判断性别是否为空
     [self judgmentOfGender];
-    
-    //注册成功
+    //数据填写正确
     if (flag == 0) {
-        NSLog(@"userName:%@",userName);
-        NSLog(@"segmentStrText:%@",segmentStrText);
-        NSLog(@"password:%@",password);
-        NSLog(@"confirmPassword:%@",confirmPassword);
-        NSLog(@"telNum:%@",telNum);
-        NSLog(@"pictureImageNameIndex:%@",pictureImageNameIndex);
-        
-        [self addAlertBox:@"恭喜你" message:@"注册成功" actionTitle:@"登陆"];
-        //数据持久化 （保持在Library文件下的 plist文件中）
-        self.defaults = [NSUserDefaults standardUserDefaults];
-        NSDictionary *myDictionary=[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:userName,segmentStrText,password,telNum,pictureImageNameIndex, nil] forKeys:[NSArray arrayWithObjects:@"userName",@"segmentStrText",@"password",@"telNum",@"pictureImageNameIndex", nil]];
-        
-        //将数据存入以用户名为名的字典中
-        [self.defaults setObject:myDictionary forKey:[NSString stringWithFormat:@"%@",userName]];
-        [self.defaults synchronize];
-        
+        //plist文件中的账号信息
+        NSDictionary *myDictionary;
+        //以当前注册的用户名为名的账号信息
+        NSDictionary *myDict = [self.defaults dictionaryForKey:[NSString stringWithFormat:@"%@",userName]];
+        //判断此用户是否已注册
+        if ([userName isEqualToString:[myDict valueForKey:@"userName"]]) {
+            [self addAlertBox:@"警告" message:@"用户已存在，请重新注册" actionTitle:@"OK"];
+        } else {
+            //数据持久化 （保持在Library文件下的 plist文件中）
+            self.defaults = [NSUserDefaults standardUserDefaults];
+            myDictionary =[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:userName,segmentStrText,password,telNum,pictureImageNameIndex, nil] forKeys:[NSArray arrayWithObjects:@"userName",@"segmentStrText",@"password",@"telNum",@"pictureImageNameIndex", nil]];
+            //将数据存入以用户名为名的字典中
+            [self.defaults setObject:myDictionary forKey:[NSString stringWithFormat:@"%@",userName]];
+            NSLog(@"*****************");
+            
+            //同步信息
+            [self.defaults synchronize];
+            NSLog(@"userName:%@",userName);
+            NSLog(@"segmentStrText:%@",segmentStrText);
+            NSLog(@"password:%@",password);
+            NSLog(@"confirmPassword:%@",confirmPassword);
+            NSLog(@"telNum:%@",telNum);
+            NSLog(@"pictureImageNameIndex:%@",pictureImageNameIndex);
+            
+            [self addAlertBox:@"恭喜你" message:@"注册成功" actionTitle:@"登陆"];
+        }
         // Documents目录
         NSString *documentsPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject;
         NSLog(@"path : %@", documentsPath);
-        
     }
 }
 
@@ -247,9 +256,7 @@
         flag = 1;
         //输入错误弹出警告
         [self addAlertBox:@"警告" message:message actionTitle:@"确定"];
-        
     }
-    
 }
 
 /**
@@ -281,13 +288,5 @@
     [self presentViewController:alert animated:YES completion:nil];
 }
 
-/**
- *  数据持久化
- */
-- (void) writeDataToFile {
-
-    
-    
-}
 
 @end
