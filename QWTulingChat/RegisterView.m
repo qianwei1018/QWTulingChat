@@ -7,10 +7,10 @@
 //
 
 #import "RegisterView.h"
+#import "RegisterViewController.h"
 
 
 @implementation RegisterView
-
 
 
 

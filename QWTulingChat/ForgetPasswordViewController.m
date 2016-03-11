@@ -36,6 +36,17 @@
 
 #pragma mark - 点击事件
 /**
+ *  回收键盘
+ *
+ *  @param touches 点击
+ *  @param event   回收键盘
+ */
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [self.telNumTextField resignFirstResponder];
+    [self.verificationCodeTextField resignFirstResponder];
+}
+
+/**
  *  请求发送验证码
  *
  *  @param sender <#sender description#>
@@ -53,6 +64,7 @@
             NSLog(@"file:%@",error);
         }
     }];
+
 }
 /**
  *  验证验证码

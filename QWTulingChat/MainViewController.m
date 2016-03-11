@@ -47,10 +47,21 @@
     self.passwordTextField.secureTextEntry = YES;
     //默认数据
     self.accountTextField.text = @"qqqqqq";
-    self.passwordTextField.text = @"mmmmmmmm";
+    self.passwordTextField.text = @"qqqqqq";
 }
 
 #pragma mark - 点击事件
+/**
+ *  回收键盘
+ *
+ *  @param touches 点击
+ *  @param event   回收键盘
+ */
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [self.accountTextField resignFirstResponder];
+    [self.passwordTextField resignFirstResponder];
+}
+
 /**
  *  登陆按钮
  *
@@ -162,6 +173,8 @@
     
     [self presentViewController:alert animated:YES completion:nil];
 }
+
+
 
 
 @end

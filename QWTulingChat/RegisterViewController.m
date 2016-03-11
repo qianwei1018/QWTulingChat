@@ -127,6 +127,18 @@
 
 #pragma mark - 点击事件
 /**
+ *  回收键盘
+ *
+ *  @param touches 点击
+ *  @param event   回收键盘
+ */
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [self.userNameTextField resignFirstResponder];
+    [self.passwordTextField resignFirstResponder];
+    [self.confirmPasswordTextField resignFirstResponder];
+    [self.TelTextField resignFirstResponder];
+}
+/**
  *  segment 选择性别
  *
  *  @param sender click Index
@@ -166,8 +178,8 @@
  *  @param sender <#sender description#>
  */
 - (IBAction)confirmSubmit:(UIButton *)sender {
-    NSLog(@"**************************");
-    NSLog(@"检查是否注册成功！");
+    NSLog(@"****************************************");
+    NSLog(@"开始检查注册数据！");
     flag = 0;
     //填写的数据
     NSString *userName = self.userNameTextField.text;

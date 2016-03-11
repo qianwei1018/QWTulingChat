@@ -31,6 +31,21 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark - 点击事件
+/**
+ *  回收键盘
+ *
+ *  @param touches 点击
+ *  @param event   回收键盘
+ */
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [self.newpPasswordTextField resignFirstResponder];
+    [self.confirmNewPasswordTextField resignFirstResponder];
+}
+
+
+
 /**
  *  提交密码
  *

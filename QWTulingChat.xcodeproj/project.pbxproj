@@ -14,6 +14,9 @@
 		7B11B2671C89A97500DBD1A0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B11B2651C89A97500DBD1A0 /* Main.storyboard */; };
 		7B11B2691C89A97500DBD1A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B11B2681C89A97500DBD1A0 /* Assets.xcassets */; };
 		7B11B26C1C89A97500DBD1A0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B11B26A1C89A97500DBD1A0 /* LaunchScreen.storyboard */; };
+		7B4CAD541C9104870042F98C /* ChatTableTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4CAD521C9104870042F98C /* ChatTableTableViewCell.m */; };
+		7B4CAD551C9104870042F98C /* ChatTableTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B4CAD531C9104870042F98C /* ChatTableTableViewCell.xib */; };
+		7B4CAD601C916E0B0042F98C /* ChatBubbleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4CAD5F1C916E0B0042F98C /* ChatBubbleViewController.m */; };
 		7B5706F11C8A68D200EA7396 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5706F01C8A68D200EA7396 /* MainViewController.m */; };
 		7B5706F51C8A692C00EA7396 /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5706F41C8A692C00EA7396 /* Model.m */; };
 		7B5706FB1C8A697C00EA7396 /* MainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5706FA1C8A697C00EA7396 /* MainView.m */; };
@@ -26,6 +29,8 @@
 		7B7326661C8D793000232220 /* ChatModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7326651C8D793000232220 /* ChatModel.m */; };
 		7B8DBAE51C8FCCB700A01F33 /* ForgetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8DBAE41C8FCCB700A01F33 /* ForgetPasswordViewController.m */; };
 		7B8DBAE81C9017CE00A01F33 /* NewpasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8DBAE71C9017CE00A01F33 /* NewpasswordViewController.m */; };
+		7BA44B291C91B143000B5E5F /* ChatBubbleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BA44B271C91B143000B5E5F /* ChatBubbleTableViewCell.m */; };
+		7BA44B2A1C91B143000B5E5F /* ChatBubbleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BA44B281C91B143000B5E5F /* ChatBubbleTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +46,11 @@
 		7B11B2681C89A97500DBD1A0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7B11B26B1C89A97500DBD1A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7B11B26D1C89A97500DBD1A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7B4CAD511C9104870042F98C /* ChatTableTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatTableTableViewCell.h; sourceTree = "<group>"; };
+		7B4CAD521C9104870042F98C /* ChatTableTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatTableTableViewCell.m; sourceTree = "<group>"; };
+		7B4CAD531C9104870042F98C /* ChatTableTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatTableTableViewCell.xib; sourceTree = "<group>"; };
+		7B4CAD5E1C916E0B0042F98C /* ChatBubbleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatBubbleViewController.h; sourceTree = "<group>"; };
+		7B4CAD5F1C916E0B0042F98C /* ChatBubbleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatBubbleViewController.m; sourceTree = "<group>"; };
 		7B5706EF1C8A68D200EA7396 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		7B5706F01C8A68D200EA7396 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		7B5706F31C8A692C00EA7396 /* Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Model.h; sourceTree = "<group>"; };
@@ -65,6 +75,9 @@
 		7B8DBAE41C8FCCB700A01F33 /* ForgetPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPasswordViewController.m; sourceTree = "<group>"; };
 		7B8DBAE61C9017CE00A01F33 /* NewpasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewpasswordViewController.h; sourceTree = "<group>"; };
 		7B8DBAE71C9017CE00A01F33 /* NewpasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewpasswordViewController.m; sourceTree = "<group>"; };
+		7BA44B261C91B143000B5E5F /* ChatBubbleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatBubbleTableViewCell.h; sourceTree = "<group>"; };
+		7BA44B271C91B143000B5E5F /* ChatBubbleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatBubbleTableViewCell.m; sourceTree = "<group>"; };
+		7BA44B281C91B143000B5E5F /* ChatBubbleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatBubbleTableViewCell.xib; sourceTree = "<group>"; };
 		AD92A3FE611FEF65477DA68E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -114,6 +127,7 @@
 				7B5706F21C8A68EB00EA7396 /* Login */,
 				7B73265C1C8D73FE00232220 /* Register */,
 				7B73265D1C8D789F00232220 /* Chat */,
+				7B4CAD5D1C916D720042F98C /* ChatBubble */,
 				7B7326521C8D426C00232220 /* Others */,
 				7B11B25C1C89A97500DBD1A0 /* Supporting Files */,
 			);
@@ -123,9 +137,22 @@
 		7B11B25C1C89A97500DBD1A0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7B11B2651C89A97500DBD1A0 /* Main.storyboard */,
 				7B11B25D1C89A97500DBD1A0 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7B4CAD5D1C916D720042F98C /* ChatBubble */ = {
+			isa = PBXGroup;
+			children = (
+				7B4CAD5E1C916E0B0042F98C /* ChatBubbleViewController.h */,
+				7B4CAD5F1C916E0B0042F98C /* ChatBubbleViewController.m */,
+				7BA44B261C91B143000B5E5F /* ChatBubbleTableViewCell.h */,
+				7BA44B271C91B143000B5E5F /* ChatBubbleTableViewCell.m */,
+				7BA44B281C91B143000B5E5F /* ChatBubbleTableViewCell.xib */,
+			);
+			name = ChatBubble;
 			sourceTree = "<group>";
 		};
 		7B5706F21C8A68EB00EA7396 /* Login */ = {
@@ -156,7 +183,6 @@
 			isa = PBXGroup;
 			children = (
 				7B5707281C8B0B3500EA7396 /* MyTulingHeader.h */,
-				7B11B2651C89A97500DBD1A0 /* Main.storyboard */,
 				7B11B2681C89A97500DBD1A0 /* Assets.xcassets */,
 				7B11B26A1C89A97500DBD1A0 /* LaunchScreen.storyboard */,
 				7B11B26D1C89A97500DBD1A0 /* Info.plist */,
@@ -186,6 +212,9 @@
 			children = (
 				7B73265E1C8D78F000232220 /* ChatViewController.h */,
 				7B73265F1C8D78F000232220 /* ChatViewController.m */,
+				7B4CAD511C9104870042F98C /* ChatTableTableViewCell.h */,
+				7B4CAD521C9104870042F98C /* ChatTableTableViewCell.m */,
+				7B4CAD531C9104870042F98C /* ChatTableTableViewCell.xib */,
 				7B7326611C8D791500232220 /* ChatView.h */,
 				7B7326621C8D791500232220 /* ChatView.m */,
 				7B7326641C8D793000232220 /* ChatModel.h */,
@@ -266,8 +295,10 @@
 			files = (
 				7B11B26C1C89A97500DBD1A0 /* LaunchScreen.storyboard in Resources */,
 				7B11B2691C89A97500DBD1A0 /* Assets.xcassets in Resources */,
+				7B4CAD551C9104870042F98C /* ChatTableTableViewCell.xib in Resources */,
 				7B5707271C8B052400EA7396 /* Podfile in Resources */,
 				7B11B2671C89A97500DBD1A0 /* Main.storyboard in Resources */,
+				7BA44B2A1C91B143000B5E5F /* ChatBubbleTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -326,9 +357,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B4CAD601C916E0B0042F98C /* ChatBubbleViewController.m in Sources */,
 				7B11B2641C89A97500DBD1A0 /* ViewController.m in Sources */,
 				7B7326581C8D73E100232220 /* RegisterView.m in Sources */,
 				7B8DBAE81C9017CE00A01F33 /* NewpasswordViewController.m in Sources */,
+				7B4CAD541C9104870042F98C /* ChatTableTableViewCell.m in Sources */,
 				7B7326601C8D78F000232220 /* ChatViewController.m in Sources */,
 				7B7326661C8D793000232220 /* ChatModel.m in Sources */,
 				7B11B2611C89A97500DBD1A0 /* AppDelegate.m in Sources */,
@@ -339,6 +372,7 @@
 				7B7326631C8D791500232220 /* ChatView.m in Sources */,
 				7B73265B1C8D73F700232220 /* RegisterModel.m in Sources */,
 				7B5706F51C8A692C00EA7396 /* Model.m in Sources */,
+				7BA44B291C91B143000B5E5F /* ChatBubbleTableViewCell.m in Sources */,
 				7B5706FB1C8A697C00EA7396 /* MainView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
