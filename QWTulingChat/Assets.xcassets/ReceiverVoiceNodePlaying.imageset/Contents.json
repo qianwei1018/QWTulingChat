@@ -2,11 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "iconfont-xingbienan.png",
+      "filename" : "ReceiverVoiceNodePlaying.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "ReceiverVoiceNodePlaying@2x.png",
       "scale" : "2x"
     },
     {

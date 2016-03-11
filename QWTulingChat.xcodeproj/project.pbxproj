@@ -31,6 +31,7 @@
 		7B8DBAE81C9017CE00A01F33 /* NewpasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8DBAE71C9017CE00A01F33 /* NewpasswordViewController.m */; };
 		7BA44B291C91B143000B5E5F /* ChatBubbleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BA44B271C91B143000B5E5F /* ChatBubbleTableViewCell.m */; };
 		7BA44B2A1C91B143000B5E5F /* ChatBubbleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BA44B281C91B143000B5E5F /* ChatBubbleTableViewCell.xib */; };
+		7BA44B301C929A1F000B5E5F /* ChatBubbleInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BA44B2F1C929A1F000B5E5F /* ChatBubbleInfo.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +79,8 @@
 		7BA44B261C91B143000B5E5F /* ChatBubbleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatBubbleTableViewCell.h; sourceTree = "<group>"; };
 		7BA44B271C91B143000B5E5F /* ChatBubbleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatBubbleTableViewCell.m; sourceTree = "<group>"; };
 		7BA44B281C91B143000B5E5F /* ChatBubbleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatBubbleTableViewCell.xib; sourceTree = "<group>"; };
+		7BA44B2E1C929A1F000B5E5F /* ChatBubbleInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatBubbleInfo.h; sourceTree = "<group>"; };
+		7BA44B2F1C929A1F000B5E5F /* ChatBubbleInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatBubbleInfo.m; sourceTree = "<group>"; };
 		AD92A3FE611FEF65477DA68E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -151,6 +154,8 @@
 				7BA44B261C91B143000B5E5F /* ChatBubbleTableViewCell.h */,
 				7BA44B271C91B143000B5E5F /* ChatBubbleTableViewCell.m */,
 				7BA44B281C91B143000B5E5F /* ChatBubbleTableViewCell.xib */,
+				7BA44B2E1C929A1F000B5E5F /* ChatBubbleInfo.h */,
+				7BA44B2F1C929A1F000B5E5F /* ChatBubbleInfo.m */,
 			);
 			name = ChatBubble;
 			sourceTree = "<group>";
@@ -366,6 +371,7 @@
 				7B7326661C8D793000232220 /* ChatModel.m in Sources */,
 				7B11B2611C89A97500DBD1A0 /* AppDelegate.m in Sources */,
 				7B11B25E1C89A97500DBD1A0 /* main.m in Sources */,
+				7BA44B301C929A1F000B5E5F /* ChatBubbleInfo.m in Sources */,
 				7B8DBAE51C8FCCB700A01F33 /* ForgetPasswordViewController.m in Sources */,
 				7B5706F11C8A68D200EA7396 /* MainViewController.m in Sources */,
 				7B7326551C8D739700232220 /* RegisterViewController.m in Sources */,

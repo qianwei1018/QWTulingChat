@@ -9,7 +9,7 @@
 #import "ChatViewController.h"
 #import "MyTulingHeader.h"
 #import "ChatTableTableViewCell.h"
-
+#import "ChatBubbleViewController.h"
 @interface ChatViewController ()<UIScrollViewDelegate,UITableViewDelegate,UITableViewDataSource>
 
 
@@ -152,6 +152,10 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"开始聊天");
     
+    
+    ChatBubbleViewController *chatBubbleVC = [self.storyboard instantiateViewControllerWithIdentifier:@"chatBubbleViewController"];
+    
+    [self.navigationController pushViewController:chatBubbleVC animated:YES];
     
 }
 

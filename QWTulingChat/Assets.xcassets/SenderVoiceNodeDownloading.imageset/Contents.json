@@ -2,11 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "iconfont-danxuan (1).png",
+      "filename" : "SenderVoiceNodeDownloading.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "SenderVoiceNodeDownloading@2x.png",
       "scale" : "2x"
     },
     {
