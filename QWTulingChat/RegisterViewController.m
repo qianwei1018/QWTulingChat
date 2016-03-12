@@ -137,6 +137,7 @@
     [self.passwordTextField resignFirstResponder];
     [self.confirmPasswordTextField resignFirstResponder];
     [self.TelTextField resignFirstResponder];
+    self.TelTextField.keyboardType = UIKeyboardTypeNumberPad;
 }
 /**
  *  segment 选择性别

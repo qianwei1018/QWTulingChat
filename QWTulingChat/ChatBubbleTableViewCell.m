@@ -36,7 +36,7 @@
     self.chatImageView.layer.cornerRadius = self.chatImageView.bounds.size.height/2;
     self.chatImageView.image = [UIImage imageNamed:@"pictureImage1"];
     self.timeLabel.text = @"一分钟前";
-    self.chatContentLabel.text = @"测试dsbvhdbvbdsbvdbvbuvbudsbvubvubcfcycufyufuyfufuyfuyfuyfutfdbvdbvbsdvbdsvbdsbvudsbvoudsbvubdsvbdsbvdbvdbvbdsj";
+    self.chatContentLabel.text = @"测试hbvsdbvdsbvhdsbvshsdvbbjhbvhdsbvvbbvub";
     
     self.backgroungImgView.layer.cornerRadius = 15;
     self.backgroungImgView.layer.masksToBounds = YES;
