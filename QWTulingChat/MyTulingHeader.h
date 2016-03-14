@@ -18,6 +18,12 @@
 #define SMSAppSecret @"5cf33bbe4707c9e5f85e839121d295b7"
 
 /**
+ *  图灵机器人API
+ *
+ *  @return <#return value description#>
+ */
+#define URLAPIKEY @"http://www.tuling123.com/openapi/api?key=78aaf0702f48805fdaf8d07492eef0ae"
+/**
  *  屏幕的大小
  *
  *  @return <#return value description#>
