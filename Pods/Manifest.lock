@@ -17,17 +17,20 @@ PODS:
   - MOBFoundation_IDFA (1.4.0)
   - SDAutoLayout (1.31)
   - SMSSDK (2.0.2)
+  - UMengSocial (4.4)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.0)
   - MOBFoundation_IDFA
   - SDAutoLayout (~> 1.31)
   - SMSSDK
+  - UMengSocial (~> 4.3)
 
 SPEC CHECKSUMS:
   AFNetworking: a0075feb321559dc78d9d85b55d11caa19eabb93
   MOBFoundation_IDFA: 3c837e657549ded25f21dc3f34808065a4238502
   SDAutoLayout: 79b8977f863ba4722bb8f8f6f92981d0b8ae932a
   SMSSDK: 4c369e5df6d6998b5341f53bf98a0c18a5b90719
+  UMengSocial: aba7296602310385114d82c255539a7bef3b7ab0
 
 COCOAPODS: 0.39.0

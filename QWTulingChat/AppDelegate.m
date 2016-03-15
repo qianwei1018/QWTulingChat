@@ -4,11 +4,14 @@
 //
 //  Created by sq-ios25 on 16/3/4.
 //  Copyright © 2016年 sq-ios25. All rights reserved.
-//
+//  $(inherited) -ObjC -l"AFNetworking" -l"APOpenSdk" -l"SDAutoLayout" -l"SocialAlipayShare" -l"SocialFacebook" -l"SocialInstagram" -l"SocialLaiWang" -l"SocialLine" -l"SocialQQ" -l"SocialSina" -l"SocialSinaSSO" -l"SocialTumblr" -l"SocialTwitter" -l"SocialWechat" -l"SocialWhatsapp" -l"UMSocial_Sdk_4.4" -l"UMSocial_Sdk_Comment_4.4" -l"WeChatSDK" -l"WeiboSDK" -l"iconv" -l"icucore" -l"sqlite3" -l"stdc++" -l"z" -framework "Accounts" -framework "AddressBook" -framework "AddressBookUI" -framework "CoreData" -framework "CoreGraphics" -framework "CoreTelephony" -framework "FBSDKCoreKit" -framework "FBSDKLoginKit" -framework "FBSDKShareKit" -framework "Fabric" -framework "ImageIO" -framework "MOBFoundation" -framework "MessageUI" -framework "MobileCoreServices" -framework "SMS_SDK" -framework "Security" -framework "Social" -framework "SystemConfiguration" -framework "TencentOpenAPI" -framework "TwitterCore" -framework "TwitterKit" -framework "javascriptcore"
 
 #import "AppDelegate.h"
 #import "MyTulingHeader.h"
 #import <SMS_SDK/SMSSDK.h>
+#import <UMSocial.h>
+#import "UMSocialSinaSSOHandler.h"
+#import "UMSocialWechatHandler.h"
 
 @interface AppDelegate ()
 
@@ -22,6 +25,17 @@
     
     //短信验证key
     [SMSSDK registerApp:SMSAppKey withSecret:SMSAppSecret];
+    
+    //友盟分享KEY
+    [UMSocialData setAppKey:@"56d68bdd67e58ede1a000b1a"];
+    
+    //微博
+//    [UMSocialSinaSSOHandler openNewSinaSSOWithAppKey:@"3228337151"
+//                                              secret:@"e2a93a425c5f14a1867862134e2a8ecd"
+//                                         RedirectURL:@"http://sns.whalecloud.com/sina2/callback"];
+    
+    //微信
+    [UMSocialWechatHandler setWXAppId:@"wxd930ea5d5a258f4f" appSecret:@"db426a9829e4b49a0dcac7b4162da6b6" url:@"http://www.umeng.com/social"];
     
     return YES;
 }

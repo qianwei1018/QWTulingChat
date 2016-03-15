@@ -31,8 +31,6 @@
 		7B7326581C8D73E100232220 /* RegisterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7326571C8D73E100232220 /* RegisterView.m */; };
 		7B73265B1C8D73F700232220 /* RegisterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B73265A1C8D73F700232220 /* RegisterModel.m */; };
 		7B7326601C8D78F000232220 /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B73265F1C8D78F000232220 /* ChatViewController.m */; };
-		7B7326631C8D791500232220 /* ChatView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7326621C8D791500232220 /* ChatView.m */; };
-		7B7326661C8D793000232220 /* ChatModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7326651C8D793000232220 /* ChatModel.m */; };
 		7B8DBAE51C8FCCB700A01F33 /* ForgetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8DBAE41C8FCCB700A01F33 /* ForgetPasswordViewController.m */; };
 		7B8DBAE81C9017CE00A01F33 /* NewpasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8DBAE71C9017CE00A01F33 /* NewpasswordViewController.m */; };
 		7BA44B291C91B143000B5E5F /* ChatBubbleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BA44B271C91B143000B5E5F /* ChatBubbleTableViewCell.m */; };
@@ -41,6 +39,8 @@
 		7BA44B7E1C93EC71000B5E5F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BA44B7D1C93EC71000B5E5F /* Foundation.framework */; };
 		7BA44B801C93EC7F000B5E5F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BA44B7F1C93EC7F000B5E5F /* CoreGraphics.framework */; };
 		7BA44B821C93EC88000B5E5F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BA44B811C93EC88000B5E5F /* UIKit.framework */; };
+		7BD329A41C97BBC400FC5CE8 /* PersonalCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BD329A21C97BBC400FC5CE8 /* PersonalCenterViewController.m */; };
+		7BD329A51C97BBC400FC5CE8 /* PersonalCenterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BD329A31C97BBC400FC5CE8 /* PersonalCenterViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -87,10 +87,6 @@
 		7B73265A1C8D73F700232220 /* RegisterModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterModel.m; sourceTree = "<group>"; };
 		7B73265E1C8D78F000232220 /* ChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatViewController.h; sourceTree = "<group>"; };
 		7B73265F1C8D78F000232220 /* ChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatViewController.m; sourceTree = "<group>"; };
-		7B7326611C8D791500232220 /* ChatView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatView.h; sourceTree = "<group>"; };
-		7B7326621C8D791500232220 /* ChatView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatView.m; sourceTree = "<group>"; };
-		7B7326641C8D793000232220 /* ChatModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatModel.h; sourceTree = "<group>"; };
-		7B7326651C8D793000232220 /* ChatModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatModel.m; sourceTree = "<group>"; };
 		7B8DBAE31C8FCCB700A01F33 /* ForgetPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPasswordViewController.h; sourceTree = "<group>"; };
 		7B8DBAE41C8FCCB700A01F33 /* ForgetPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPasswordViewController.m; sourceTree = "<group>"; };
 		7B8DBAE61C9017CE00A01F33 /* NewpasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewpasswordViewController.h; sourceTree = "<group>"; };
@@ -103,6 +99,9 @@
 		7BA44B7D1C93EC71000B5E5F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7BA44B7F1C93EC7F000B5E5F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		7BA44B811C93EC88000B5E5F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		7BD329A11C97BBC400FC5CE8 /* PersonalCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalCenterViewController.h; sourceTree = "<group>"; };
+		7BD329A21C97BBC400FC5CE8 /* PersonalCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalCenterViewController.m; sourceTree = "<group>"; };
+		7BD329A31C97BBC400FC5CE8 /* PersonalCenterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PersonalCenterViewController.xib; sourceTree = "<group>"; };
 		AD92A3FE611FEF65477DA68E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -161,6 +160,7 @@
 				7B73265C1C8D73FE00232220 /* Register */,
 				7B73265D1C8D789F00232220 /* Chat */,
 				7B4CAD5D1C916D720042F98C /* ChatBubble */,
+				7BD3299B1C97B6A800FC5CE8 /* PersonalCenter */,
 				7B7326521C8D426C00232220 /* Others */,
 				7B11B25C1C89A97500DBD1A0 /* Supporting Files */,
 			);
@@ -180,12 +180,12 @@
 			children = (
 				7B4CAD5E1C916E0B0042F98C /* ChatBubbleViewController.h */,
 				7B4CAD5F1C916E0B0042F98C /* ChatBubbleViewController.m */,
+				7B045FEB1C9662F20086262D /* ContentInfo.h */,
+				7B045FEC1C9662F20086262D /* ContentInfo.m */,
 				7B1CF4991C941A020033B198 /* MessageCell.h */,
 				7B1CF49A1C941A020033B198 /* MessageCell.m */,
 				7B1CF49C1C941A140033B198 /* Message.h */,
 				7B1CF49D1C941A140033B198 /* Message.m */,
-				7B045FEB1C9662F20086262D /* ContentInfo.h */,
-				7B045FEC1C9662F20086262D /* ContentInfo.m */,
 				7B1CF49F1C941A230033B198 /* MessageFrame.h */,
 				7B1CF4A01C941A230033B198 /* MessageFrame.m */,
 				7B1CF4A41C941D4E0033B198 /* messages.plist */,
@@ -259,12 +259,18 @@
 				7B4CAD511C9104870042F98C /* ChatTableTableViewCell.h */,
 				7B4CAD521C9104870042F98C /* ChatTableTableViewCell.m */,
 				7B4CAD531C9104870042F98C /* ChatTableTableViewCell.xib */,
-				7B7326611C8D791500232220 /* ChatView.h */,
-				7B7326621C8D791500232220 /* ChatView.m */,
-				7B7326641C8D793000232220 /* ChatModel.h */,
-				7B7326651C8D793000232220 /* ChatModel.m */,
 			);
 			name = Chat;
+			sourceTree = "<group>";
+		};
+		7BD3299B1C97B6A800FC5CE8 /* PersonalCenter */ = {
+			isa = PBXGroup;
+			children = (
+				7BD329A11C97BBC400FC5CE8 /* PersonalCenterViewController.h */,
+				7BD329A21C97BBC400FC5CE8 /* PersonalCenterViewController.m */,
+				7BD329A31C97BBC400FC5CE8 /* PersonalCenterViewController.xib */,
+			);
+			name = PersonalCenter;
 			sourceTree = "<group>";
 		};
 		7F941CB9915CB1EDAF8A51A2 /* Pods */ = {
@@ -310,7 +316,6 @@
 				TargetAttributes = {
 					7B11B2581C89A97500DBD1A0 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = 857K5BD99R;
 					};
 				};
 			};
@@ -339,6 +344,7 @@
 			files = (
 				7B11B26C1C89A97500DBD1A0 /* LaunchScreen.storyboard in Resources */,
 				7B11B2691C89A97500DBD1A0 /* Assets.xcassets in Resources */,
+				7BD329A51C97BBC400FC5CE8 /* PersonalCenterViewController.xib in Resources */,
 				7B4CAD551C9104870042F98C /* ChatTableTableViewCell.xib in Resources */,
 				7B5707271C8B052400EA7396 /* Podfile in Resources */,
 				7B1CF4A51C941D4E0033B198 /* messages.plist in Resources */,
@@ -408,8 +414,8 @@
 				7B7326581C8D73E100232220 /* RegisterView.m in Sources */,
 				7B8DBAE81C9017CE00A01F33 /* NewpasswordViewController.m in Sources */,
 				7B4CAD541C9104870042F98C /* ChatTableTableViewCell.m in Sources */,
+				7BD329A41C97BBC400FC5CE8 /* PersonalCenterViewController.m in Sources */,
 				7B7326601C8D78F000232220 /* ChatViewController.m in Sources */,
-				7B7326661C8D793000232220 /* ChatModel.m in Sources */,
 				7B11B2611C89A97500DBD1A0 /* AppDelegate.m in Sources */,
 				7B11B25E1C89A97500DBD1A0 /* main.m in Sources */,
 				7BA44B301C929A1F000B5E5F /* ChatBubbleInfo.m in Sources */,
@@ -417,7 +423,6 @@
 				7B5706F11C8A68D200EA7396 /* MainViewController.m in Sources */,
 				7B7326551C8D739700232220 /* RegisterViewController.m in Sources */,
 				7B1CF49B1C941A020033B198 /* MessageCell.m in Sources */,
-				7B7326631C8D791500232220 /* ChatView.m in Sources */,
 				7B73265B1C8D73F700232220 /* RegisterModel.m in Sources */,
 				7B5706F51C8A692C00EA7396 /* Model.m in Sources */,
 				7B1CF49E1C941A140033B198 /* Message.m in Sources */,
@@ -534,9 +539,82 @@
 			baseConfigurationReference = 2FFCE92243B9B1B796B26D05 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = QWTulingChat/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"AFNetworking\"",
+					"-l\"APOpenSdk\"",
+					"-l\"SDAutoLayout\"",
+					"-l\"SocialAlipayShare\"",
+					"-l\"SocialFacebook\"",
+					"-l\"SocialInstagram\"",
+					"-l\"SocialLaiWang\"",
+					"-l\"SocialLine\"",
+					"-l\"SocialQQ\"",
+					"-l\"SocialSina\"",
+					"-l\"SocialSinaSSO\"",
+					"-l\"SocialTumblr\"",
+					"-l\"SocialTwitter\"",
+					"-l\"SocialWechat\"",
+					"-l\"SocialWhatsapp\"",
+					"-l\"UMSocial_Sdk_4.4\"",
+					"-l\"UMSocial_Sdk_Comment_4.4\"",
+					"-l\"WeChatSDK\"",
+					"-l\"WeiboSDK\"",
+					"-l\"iconv\"",
+					"-l\"icucore\"",
+					"-l\"sqlite3\"",
+					"-l\"stdc++\"",
+					"-l\"z\"",
+					"-framework",
+					"\"Accounts\"",
+					"-framework",
+					"\"AddressBook\"",
+					"-framework",
+					"\"AddressBookUI\"",
+					"-framework",
+					"\"CoreData\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreTelephony\"",
+					"-framework",
+					"\"FBSDKCoreKit\"",
+					"-framework",
+					"\"FBSDKLoginKit\"",
+					"-framework",
+					"\"FBSDKShareKit\"",
+					"-framework",
+					"\"Fabric\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-framework",
+					"\"MOBFoundation\"",
+					"-framework",
+					"\"MessageUI\"",
+					"-framework",
+					"\"MobileCoreServices\"",
+					"-framework",
+					"\"SMS_SDK\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"Social\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"TencentOpenAPI\"",
+					"-framework",
+					"\"TwitterCore\"",
+					"-framework",
+					"\"TwitterKit\"",
+					"-framework",
+					"\"javascriptcore\"",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = cn.com.sq.QWTulingChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -547,9 +625,82 @@
 			baseConfigurationReference = AD92A3FE611FEF65477DA68E /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = QWTulingChat/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"AFNetworking\"",
+					"-l\"APOpenSdk\"",
+					"-l\"SDAutoLayout\"",
+					"-l\"SocialAlipayShare\"",
+					"-l\"SocialFacebook\"",
+					"-l\"SocialInstagram\"",
+					"-l\"SocialLaiWang\"",
+					"-l\"SocialLine\"",
+					"-l\"SocialQQ\"",
+					"-l\"SocialSina\"",
+					"-l\"SocialSinaSSO\"",
+					"-l\"SocialTumblr\"",
+					"-l\"SocialTwitter\"",
+					"-l\"SocialWechat\"",
+					"-l\"SocialWhatsapp\"",
+					"-l\"UMSocial_Sdk_4.4\"",
+					"-l\"UMSocial_Sdk_Comment_4.4\"",
+					"-l\"WeChatSDK\"",
+					"-l\"WeiboSDK\"",
+					"-l\"iconv\"",
+					"-l\"icucore\"",
+					"-l\"sqlite3\"",
+					"-l\"stdc++\"",
+					"-l\"z\"",
+					"-framework",
+					"\"Accounts\"",
+					"-framework",
+					"\"AddressBook\"",
+					"-framework",
+					"\"AddressBookUI\"",
+					"-framework",
+					"\"CoreData\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreTelephony\"",
+					"-framework",
+					"\"FBSDKCoreKit\"",
+					"-framework",
+					"\"FBSDKLoginKit\"",
+					"-framework",
+					"\"FBSDKShareKit\"",
+					"-framework",
+					"\"Fabric\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-framework",
+					"\"MOBFoundation\"",
+					"-framework",
+					"\"MessageUI\"",
+					"-framework",
+					"\"MobileCoreServices\"",
+					"-framework",
+					"\"SMS_SDK\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"Social\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"TencentOpenAPI\"",
+					"-framework",
+					"\"TwitterCore\"",
+					"-framework",
+					"\"TwitterKit\"",
+					"-framework",
+					"\"javascriptcore\"",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = cn.com.sq.QWTulingChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

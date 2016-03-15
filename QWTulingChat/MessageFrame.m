@@ -18,6 +18,12 @@
     
     // 0、获取屏幕宽度
     CGFloat screenW = [UIScreen mainScreen].bounds.size.width;
+    
+    if (_message.type == MessageTypeMe) {
+        _showTime = YES;
+    } else {
+        _showTime = NO;
+    }
     // 1、计算时间的位置
     if (_showTime){
     

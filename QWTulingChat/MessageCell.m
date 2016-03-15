@@ -9,6 +9,7 @@
 #import "MessageCell.h"
 #import "Message.h"
 #import "MessageFrame.h"
+@class ChatBubbleViewController;
 
 @interface MessageCell ()
 {
@@ -34,10 +35,10 @@
         _timeBtn.titleLabel.font = kTimeFont;
         _timeBtn.enabled = NO;
         [_timeBtn setBackgroundImage:[UIImage imageNamed:@"chat_timeline_bg.png"] forState:UIControlStateNormal];
-        [self.contentView addSubview:_timeBtn];
         
         // 2、创建头像
         _iconView = [[UIImageView alloc] init];
+        _iconView.layer.cornerRadius = _iconView.bounds.size.height/2;
         [self.contentView addSubview:_iconView];
         
         // 3、创建内容
@@ -48,6 +49,8 @@
         _contentBtn.titleLabel.numberOfLines = 0;
         
         [self.contentView addSubview:_contentBtn];
+        
+        [self.contentView addSubview:_timeBtn];
     }
     return self;
 }
@@ -76,8 +79,8 @@
     }
     
     UIImage *normal , *focused;
+    //判断发送方
     if (message.type == MessageTypeMe) {
-        
         normal = [UIImage imageNamed:@"chatto_bg_normal.png"];
         normal = [normal stretchableImageWithLeftCapWidth:normal.size.width * 0.5 topCapHeight:normal.size.height * 0.7];
         focused = [UIImage imageNamed:@"chatto_bg_focused.png"];
@@ -94,7 +97,6 @@
     [_contentBtn setBackgroundImage:focused forState:UIControlStateHighlighted];
     
 }
-
 
 
 
