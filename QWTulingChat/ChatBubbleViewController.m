@@ -8,10 +8,11 @@
 
 #import "ChatBubbleViewController.h"
 #import "ChatBubbleTableViewCell.h"
-#import "ChatNetWorkingData.h"
 #import "MyTulingHeader.h"
+#import <AFNetworking.h>
 #import "MessageFrame.h"
 #import "Message.h"
+#import "ContentInfo.h"
 #import "MessageCell.h"
 
 @interface ChatBubbleViewController ()<UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
@@ -35,7 +36,6 @@
 
 @property (strong, nonatomic) NSMutableArray *chatBubbleInfo;
 
-
 @end
 
 @implementation ChatBubbleViewController
@@ -45,7 +45,6 @@
     
     self.bubbleTableView.delegate = self;
     self.bubbleTableView.dataSource = self;
-//    [self setupTableView];
    
     [self initView];
     [self initData];
@@ -96,11 +95,9 @@
     [UIView animateWithDuration:[note.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue] animations:^{
         self.view.transform = CGAffineTransformMakeTranslation(0, ty);
     }];
-    
 }
 #pragma mark 键盘即将退出
 - (void)keyBoardWillHide:(NSNotification *)note{
-    
     [UIView animateWithDuration:[note.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue] animations:^{
         self.view.transform = CGAffineTransformIdentity;
     }];
@@ -108,7 +105,6 @@
 #pragma mark - 文本框代理方法
 #pragma mark 点击textField键盘的回车按钮
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
-    
     // 1、增加数据源
     NSString *content = textField.text;
        //时间格式化
@@ -116,30 +112,101 @@
     [formatter setDateFormat:@"HH:mm"];
     NSString *time = [formatter stringFromDate:[NSDate date]];
     NSLog(@"time:%@",time);
-      //增加内容
+       //增加内容
+    
     [self addMessageWithContent:content time:time];
     // 2、刷新表格
     [self.bubbleTableView reloadData];
     // 3、滚动至当前行
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:_allMessagesFrame.count - 1 inSection:0];
-    [self.bubbleTableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+    [self scrollToBottom];
     // 4、清空文本框内容
     _messageField.text = nil;
+    // 5、添加网络数据(数据回复)
+    [self loadMessageByInfoByAFNetworking:content time:time];
+    // 6、键盘回收
+    [_messageField resignFirstResponder];
+    return YES;
+}
+
+#pragma mark - 网络请求
+/**
+ *  网络请求数据  AFNetworking
+ *
+ *  @param infoString <#infoString description#>
+ *  @param time       <#time description#>
+ */
+- (void) loadMessageByInfoByAFNetworking:(NSString *)infoString time:(NSString *)time {
+    //http://www.tuling123.com/openapi/api?key=78aaf0702f48805fdaf8d07492eef0ae&info=
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    NSMutableDictionary *parms = [NSMutableDictionary dictionary];
+    parms[@"info"] = infoString;
+    [manager POST:URLAPIKEY parameters:parms progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSLog(@"success");
+        NSLog(@"responseObject%@",responseObject);
+        
+        
+        //数据的判断及输出
+        [self judgmentOfContentInfoWithDictionary:responseObject time:time];
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"failure:%@",error);
+    }];
+}
+
+- (void)judgmentOfContentInfoWithDictionary:(NSDictionary *)dict time:(NSString *)time {
+    ContentInfo *contentInfo = [[ContentInfo alloc] init];
+    //返回的数据
+    contentInfo.text = [dict valueForKey:@"text"];
+    contentInfo.url = [dict valueForKey:@"url"];
+    contentInfo.list = [dict valueForKey:@"list"];
+    contentInfo.article = [dict valueForKey:@"article"];
+    contentInfo.source = [dict valueForKey:@"source"];
+    contentInfo.icon = [dict valueForKey:@"icon"];
+    contentInfo.detailurl = [dict valueForKey:@"detailurl"];
+    contentInfo.name = [dict valueForKey:@"name"];
+    contentInfo.song = [dict valueForKey:@"song"];
+    contentInfo.singer = [dict valueForKey:@"singer"];
+    contentInfo.info = [dict valueForKey:@"info"];
     
-    //添加网络数据
-//    [self loadMessageByInfoStringByPost:content];
+    NSLog(@"%@",contentInfo.text);
+    NSString *content;
+    if ([[dict allKeys] containsObject:@"list"]) {
+        NSArray *listArray = [dict valueForKey:@"list"];
+        //输出text
+        content = [NSString stringWithFormat:@"%@",contentInfo.text];
+        //判断新闻类
+        for (int i = 0; i < listArray.count; i++) {
+            NSDictionary *arrayDict = listArray[i];
+//                for (NSDictionary *dict in listArray[i]) {
+            if ([[arrayDict allKeys] containsObject:@"article"]) {
+                for (NSDictionary *listArrayDict in arrayDict) {
+                    contentInfo.article = listArrayDict[@"article"];
+                    contentInfo.source = listArrayDict[@"source"];
+                    contentInfo.detailurl = listArrayDict[@"detailurl"];
+                    content = [content stringByAppendingString:[NSString stringWithFormat:@"%@\n%@\n%@",contentInfo.article,contentInfo.source,contentInfo.detailurl]];
+                }
+                
+            } else {
+            
+            }
+        }
+
+    } else if ([[dict allKeys] containsObject:@"url"]) {
+        content = [NSString stringWithFormat:@"%@%@",contentInfo.text,contentInfo.url];
+    } else {
+        content = [NSString stringWithFormat:@"%@",contentInfo.text];
+    }
+    
+    //添加回复cell
     [self addReplyMessageWithContent:content time:time];
     [self.bubbleTableView reloadData];
-    
-    
-    [_messageField resignFirstResponder];
-    
-    return YES;
 }
 
 #pragma mark 给数据源增加内容
 /**
- *  增加内容
+ *  增加输入内容
  *
  *  @param content 内容
  *  @param time    时间
@@ -156,11 +223,15 @@
     [_allMessagesFrame addObject:mf];
 }
 
+/**
+ *  增加回复内容
+ *
+ *  @param content <#content description#>
+ *  @param time    <#time description#>
+ */
 - (void)addReplyMessageWithContent:(NSString *)content time:(NSString*)time {
     MessageFrame *mf = [[MessageFrame alloc] init];
     Message *msg = [[Message alloc] init];
-    
-    [self loadMessageByInfoStringByPost:content];
     
     msg.content = content;
     msg.time = time;
@@ -169,48 +240,22 @@
     mf.message = msg;
     
     [_allMessagesFrame addObject:mf];
+    
+    //刷新bubbleTableView
+    [self.bubbleTableView reloadData];
+    // 滚动至当前行
+    [self scrollToBottom];
 }
 
-
-- (void)loadMessageByInfoStringByPost:(NSString *)infoString {
-    
-    NSString *APIAddress = URLAPIKEY;
-
-    // 1.创建URL
-    NSURL *url = [NSURL URLWithString:APIAddress];
-    
-    // 2.创建request
-    // 以POST方法想服务器请求数据
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-    // 对request进行配置
-    request.HTTPMethod = @"POST";
-    
-    // 参数的格式化
-    NSString *urlStr = [NSString stringWithFormat:@"%@&info=%@", APIAddress, infoString];
-    NSLog(@"urlStr:%@",urlStr);
-    urlStr = [urlStr stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
-    NSData *data = [NSData dataWithBytes:urlStr.UTF8String length:urlStr.length];
-    request.HTTPBody = data;
-    
-    NSURLSession *session = [NSURLSession sharedSession];
-    
-    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        NSDictionary *dict=[NSDictionary dictionaryWithObject:response forKey:@"result"];
-        NSLog(@"%@",dict);
-        
-//        NSString *dataString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-//        NSLog(@"data string : %@", dataString);
-        
-        
-    }];
-    
-    [dataTask resume];
-    
+/**
+ *  滑动至当前行
+ */
+- (void)scrollToBottom {
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:_allMessagesFrame.count - 1 inSection:0];
+    [self.bubbleTableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
 }
-
 
 #pragma mark - tableView数据源方法
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return _allMessagesFrame.count;
 }
@@ -222,25 +267,19 @@
     if (cell == nil) {
         cell = [[MessageCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-    
     // 设置数据
     cell.messageFrame = _allMessagesFrame[indexPath.row];
-    
-    
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     return [_allMessagesFrame[indexPath.row] cellHeight];
 }
 
 #pragma mark - 代理方法
-
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
     [self.view endEditing:YES];
 }
-
 
 #pragma mark - 语音按钮点击
 /**
@@ -265,62 +304,6 @@
 
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//
-///**
-// *  自适应高度
-// */
-//- (void)setupTableView {
-//    self.bubbleTableView.rowHeight = UITableViewAutomaticDimension;
-//    self.bubbleTableView.estimatedRowHeight = 10; //给定一个初始的默认高度
-////     autoHeightRatio() 传0则根据文字自动计算高度（传大于0的值则根据此数值设置高度和宽度的比值）
-//    _messageField.sd_layout.autoHeightRatio(0);
-//    
-//}
-//#pragma mark - table view data source
-//-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-//    return 1;
-//}
-//
-//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-//    return  1;
-//}
-//
-//#pragma mark - table view delegate
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    static NSString *reuseIdentifier = @"chatBubbleTableViewCell";
-//    [tableView registerNib:[UINib nibWithNibName:@"ChatBubbleTableViewCell" bundle:nil] forCellReuseIdentifier:reuseIdentifier];
-//    ChatBubbleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
-//    if (cell == nil) {
-//        cell = [[[NSBundle mainBundle] loadNibNamed:@"ChatBubbleTableViewCell" owner:nil options:nil]lastObject];
-//    }
-//    
-//    ChatBubbleInfo *chatInfo = self.chatBubbleInfo[indexPath.row];
-//    
-//    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-//    cell.backgroundColor = [UIColor lightGrayColor];
-//    
-//    
-//    
-//    [cell bindChatBubbleInfo:chatInfo];
-//    
-//    NSLog(@"indexpath:%ld,chatInfo:%@",(long)indexPath.row,chatInfo);
-//    
-//    return cell;
-//}
 
 
 @end

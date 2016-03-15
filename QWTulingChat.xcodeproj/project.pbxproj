@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3F1BF3542DCFDB691F5A2058 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D2CBFAE549669F01494C284 /* libPods.a */; };
+		7B045FED1C9662F20086262D /* ContentInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B045FEC1C9662F20086262D /* ContentInfo.m */; };
 		7B11B25E1C89A97500DBD1A0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B11B25D1C89A97500DBD1A0 /* main.m */; };
 		7B11B2611C89A97500DBD1A0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B11B2601C89A97500DBD1A0 /* AppDelegate.m */; };
 		7B11B2641C89A97500DBD1A0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B11B2631C89A97500DBD1A0 /* ViewController.m */; };
@@ -19,7 +20,6 @@
 		7B1CF4A11C941A230033B198 /* MessageFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B1CF4A01C941A230033B198 /* MessageFrame.m */; };
 		7B1CF4A31C941BC40033B198 /* libc++abi.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B1CF4A21C941BC40033B198 /* libc++abi.tbd */; };
 		7B1CF4A51C941D4E0033B198 /* messages.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7B1CF4A41C941D4E0033B198 /* messages.plist */; };
-		7B2AE8B51C955D1800165D56 /* ChatNetWorkingData.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B2AE8B41C955D1800165D56 /* ChatNetWorkingData.m */; };
 		7B4CAD541C9104870042F98C /* ChatTableTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4CAD521C9104870042F98C /* ChatTableTableViewCell.m */; };
 		7B4CAD551C9104870042F98C /* ChatTableTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B4CAD531C9104870042F98C /* ChatTableTableViewCell.xib */; };
 		7B4CAD601C916E0B0042F98C /* ChatBubbleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4CAD5F1C916E0B0042F98C /* ChatBubbleViewController.m */; };
@@ -46,6 +46,8 @@
 /* Begin PBXFileReference section */
 		1D2CBFAE549669F01494C284 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FFCE92243B9B1B796B26D05 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		7B045FEB1C9662F20086262D /* ContentInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentInfo.h; sourceTree = "<group>"; };
+		7B045FEC1C9662F20086262D /* ContentInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentInfo.m; sourceTree = "<group>"; };
 		7B11B2591C89A97500DBD1A0 /* QWTulingChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QWTulingChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B11B25D1C89A97500DBD1A0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7B11B25F1C89A97500DBD1A0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -64,8 +66,6 @@
 		7B1CF4A01C941A230033B198 /* MessageFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageFrame.m; sourceTree = "<group>"; };
 		7B1CF4A21C941BC40033B198 /* libc++abi.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++abi.tbd"; path = "usr/lib/libc++abi.tbd"; sourceTree = SDKROOT; };
 		7B1CF4A41C941D4E0033B198 /* messages.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = messages.plist; sourceTree = "<group>"; };
-		7B2AE8B31C955D1800165D56 /* ChatNetWorkingData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatNetWorkingData.h; sourceTree = "<group>"; };
-		7B2AE8B41C955D1800165D56 /* ChatNetWorkingData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatNetWorkingData.m; sourceTree = "<group>"; };
 		7B4CAD511C9104870042F98C /* ChatTableTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatTableTableViewCell.h; sourceTree = "<group>"; };
 		7B4CAD521C9104870042F98C /* ChatTableTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatTableTableViewCell.m; sourceTree = "<group>"; };
 		7B4CAD531C9104870042F98C /* ChatTableTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatTableTableViewCell.xib; sourceTree = "<group>"; };
@@ -184,10 +184,10 @@
 				7B1CF49A1C941A020033B198 /* MessageCell.m */,
 				7B1CF49C1C941A140033B198 /* Message.h */,
 				7B1CF49D1C941A140033B198 /* Message.m */,
+				7B045FEB1C9662F20086262D /* ContentInfo.h */,
+				7B045FEC1C9662F20086262D /* ContentInfo.m */,
 				7B1CF49F1C941A230033B198 /* MessageFrame.h */,
 				7B1CF4A01C941A230033B198 /* MessageFrame.m */,
-				7B2AE8B31C955D1800165D56 /* ChatNetWorkingData.h */,
-				7B2AE8B41C955D1800165D56 /* ChatNetWorkingData.m */,
 				7B1CF4A41C941D4E0033B198 /* messages.plist */,
 				7BA44B261C91B143000B5E5F /* ChatBubbleTableViewCell.h */,
 				7BA44B271C91B143000B5E5F /* ChatBubbleTableViewCell.m */,
@@ -415,13 +415,13 @@
 				7BA44B301C929A1F000B5E5F /* ChatBubbleInfo.m in Sources */,
 				7B8DBAE51C8FCCB700A01F33 /* ForgetPasswordViewController.m in Sources */,
 				7B5706F11C8A68D200EA7396 /* MainViewController.m in Sources */,
-				7B2AE8B51C955D1800165D56 /* ChatNetWorkingData.m in Sources */,
 				7B7326551C8D739700232220 /* RegisterViewController.m in Sources */,
 				7B1CF49B1C941A020033B198 /* MessageCell.m in Sources */,
 				7B7326631C8D791500232220 /* ChatView.m in Sources */,
 				7B73265B1C8D73F700232220 /* RegisterModel.m in Sources */,
 				7B5706F51C8A692C00EA7396 /* Model.m in Sources */,
 				7B1CF49E1C941A140033B198 /* Message.m in Sources */,
+				7B045FED1C9662F20086262D /* ContentInfo.m in Sources */,
 				7BA44B291C91B143000B5E5F /* ChatBubbleTableViewCell.m in Sources */,
 				7B5706FB1C8A697C00EA7396 /* MainView.m in Sources */,
 			);
