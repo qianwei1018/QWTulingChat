@@ -12,4 +12,16 @@
 @interface MessageCell : UITableViewCell
 
 @property (nonatomic, strong) MessageFrame *messageFrame;
+
+/**
+ *  接收button中的数据
+ */
+@property (nonatomic, strong) NSString *messageContent;
+/**
+ *  接收url的数组
+ */
+@property (nonatomic, strong) NSMutableArray *urlArray;
+
+
+@property (nonatomic, strong) UIViewController *viewController;
 @end

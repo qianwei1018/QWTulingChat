@@ -46,6 +46,9 @@
 #define REGEX_USER_NAME @"^[A-Za-z][A-Za-z0-9_]{5,15}"
 #define REGEX_PASSWORD @"[A-Za-z0-9]{6,20}"
 #define REGEX_TELNUM @"^1[3|4|5|7|8][0-9]\\d{8}$"
+#define REGEX_URL @"http(s)?://([\\w-]+\\.)+[\\w-]+(/[\\w- ./?%&=]*)?"
+
+
 
 
 

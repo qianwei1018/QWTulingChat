@@ -9,12 +9,12 @@
 #import "ChatBubbleViewController.h"
 #import "ChatBubbleTableViewCell.h"
 #import "MyTulingHeader.h"
-#import <AFNetworking.h>
-#import <UMSocial.h>
 #import "MessageFrame.h"
 #import "Message.h"
 #import "ContentInfo.h"
 #import "MessageCell.h"
+#import <AFNetworking.h>
+#import <UMSocial.h>
 
 @interface ChatBubbleViewController ()<UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate,UMSocialUIDelegate>
 {
@@ -184,9 +184,13 @@
         //显示text
         content = [NSString stringWithFormat:@"%@",contentInfo.text];
         NSDictionary *arrayDict;
-        for (int i = 0; i < listArray.count; i++) {
-            arrayDict = listArray[i];
-            //判断新闻类
+//          //①将内容循环输出
+//        for (int i = 0; i < listArray.count; i++) {
+//            arrayDict = listArray[i];
+        
+           // ②输出第一个的内容
+                //判断新闻类
+              arrayDict = listArray[0];
             if ([[arrayDict allKeys] containsObject:@"article"]) {
                 contentInfo.article = [arrayDict valueForKey:@"article"];
                 contentInfo.source = [arrayDict valueForKey: @"source"];
@@ -202,24 +206,26 @@
             } else {
                 content = [NSString stringWithFormat:@"对不起，未找到相关内容"];
             }
-        }
+//        }
         
     } else if ([[dict allKeys] containsObject:@"url"]) {
-    //判断仅含url 与 text 的数据类
+        //判断仅含url 与 text 的数据类
         content = [NSString stringWithFormat:@"%@%@",contentInfo.text,contentInfo.url];
     } else {
-    //判断仅含text的数据类
+        //判断仅含text的数据类
         content = [NSString stringWithFormat:@"%@",contentInfo.text];
     }
-    
-    NSLog(@"%@",content);
-    //添加长按手势
-    UILongPressGestureRecognizer *longPressGR = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(doLongPress:)];
-     [self.bubbleTableView addGestureRecognizer:longPressGR];
-    
+//    NSLog(@"%@",content);
     
     //添加回复cell
     [self addReplyMessageWithContent:content time:time];
+    
+    //添加长按手势
+    UILongPressGestureRecognizer *longPressGR = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(doLongPress:)];
+    [self.bubbleTableView addGestureRecognizer:longPressGR];
+    //添加点击手势
+    UITapGestureRecognizer *tapGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickButton)];
+    [self.bubbleTableView addGestureRecognizer:tapGR];
 }
 
 #pragma mark 给数据源增加内容
@@ -234,7 +240,7 @@
     Message *msg = [[Message alloc] init];
     msg.content = contentLabel;
     msg.time = time;
-    msg.icon = @"icon01.png";
+    msg.icon = @"pictureImage0";
     msg.type = MessageTypeMe;
     mf.message = msg;
     
@@ -253,7 +259,7 @@
     
     msg.content = contentLabel;
     msg.time = time;
-    msg.icon = @"pictureImage0";
+    msg.icon = @"icon01.png";
     msg.type = MessageTypeOther;
     mf.message = msg;
     
@@ -299,6 +305,74 @@
     [self.view endEditing:YES];
 }
 
+
+#pragma mark - 手势实现方法
+//长按分享
+- (void) doLongPress:(UIGestureRecognizer *)gesture {
+    NSLog(@"dolongPress:%@",content);
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"分享" message:@"是否分享" preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        NSLog(@"取消");
+    }];
+    [alert addAction:cancelAction];
+    UIAlertAction *shareAction = [UIAlertAction actionWithTitle:@"分享" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        NSLog(@"分享");
+        //注意：分享到新浪微博、微信好友、微信朋友圈、微信收藏、QQ空间、QQ好友、来往好友、来往朋友圈、易信好友、易信朋友圈等平台需要参考各自的集成方法
+        [UMSocialSnsService presentSnsIconSheetView:self
+                                             appKey:@"56d68bdd67e58ede1a000b1a"
+                                          shareText:content
+                                         shareImage:[UIImage imageNamed:@"LOGO_64x64"]
+                                    shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,UMShareToTencent,UMShareToWechatSession,UMShareToWechatTimeline,UMShareToQQ,UMShareToRenren,UMShareToDouban,UMShareToSms,nil]
+                                           delegate:self];
+        
+        //设置默认分享内容
+        [[UMSocialControllerService defaultControllerService] setShareText:content shareImage:[UIImage imageNamed:@"icon"] socialUIDelegate:self];
+        
+        
+    }];
+    [alert addAction:shareAction];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+//点击进入url
+- (void) clickButton {
+    NSMutableArray *urlArray = [NSMutableArray arrayWithCapacity:5];
+    NSString *urlString;
+    
+    //正则表达式url
+    NSError *error;
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:REGEX_URL options:NSRegularExpressionCaseInsensitive error:&error];
+    NSTextCheckingResult *result = [regex firstMatchInString:content options:0 range:NSMakeRange(0, [content length])];
+    if (result) {
+        urlString = [content substringWithRange:result.range];
+        NSLog(@"%@",urlString);
+        [urlArray addObject:urlString];
+        NSLog(@"urlString:%@",urlString);
+        NSLog(@"%@",urlArray);
+        
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"点击进入" preferredStyle:UIAlertControllerStyleActionSheet];
+        UIAlertAction *cancleAction = [UIAlertAction actionWithTitle:@"关闭" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        }];
+        [alert addAction:cancleAction];
+        
+        UIAlertAction *entryAction;
+        for (int i = 0; i < urlArray.count; i ++) {
+            entryAction = [UIAlertAction actionWithTitle:urlArray[i] style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+               //调用Sarfari
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlArray[i]]];
+                
+            }];
+            [alert addAction:entryAction];
+        }
+        
+        [self presentViewController:alert animated:YES completion:^{
+            
+        }];
+    }
+}
+
 #pragma mark - 语音按钮点击
 /**
  *  点击事件
@@ -319,48 +393,8 @@
         [sender setBackgroundImage:[UIImage imageNamed:@"chat_bottom_keyboard_press.png"] forState:UIControlStateHighlighted];
         [_messageField resignFirstResponder];
     }
-
-}
-
-- (void) doLongPress:(UIGestureRecognizer *)gesture {
-    NSLog(@"dolongPress:%@",content);
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"分享" message:@"是否分享" preferredStyle:UIAlertControllerStyleAlert];
     
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-        NSLog(@"取消");
-    }];
-    [alert addAction:cancelAction];
-    UIAlertAction *shareAction = [UIAlertAction actionWithTitle:@"分享" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        NSLog(@"分享");
-        
-        //注意：分享到微信好友、微信朋友圈、微信收藏、QQ空间、QQ好友、来往好友、来往朋友圈、易信好友、易信朋友圈、Facebook、Twitter、Instagram等平台需要参考各自的集成方法
-        [UMSocialSnsService presentSnsIconSheetView:self
-                                             appKey:@"56d68bdd67e58ede1a000b1a"
-                                          shareText:@"你要分享的文字"
-                                         shareImage:[UIImage imageNamed:@"LOGO_64x64"]
-                                    shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,UMShareToTencent,UMShareToWechatSession,UMShareToWechatTimeline,UMShareToQzone,UMShareToQQ,UMShareToRenren,UMShareToDouban,UMShareToSms,nil]
-                                           delegate:self];
-        
-        
-        
-        //使用UMShareToWechatSession,UMShareToWechatTimeline,UMShareToWechatFavorite分别代表微信好友、微信朋友圈、微信收藏
-        [[UMSocialDataService defaultDataService]  postSNSWithTypes:@[UMShareToWechatSession] content:@"分享内嵌文字" image:nil location:nil urlResource:nil presentedController:self completion:^(UMSocialResponseEntity *response){
-            if (response.responseCode == UMSResponseCodeSuccess) {
-                NSLog(@"分享成功！");
-            }
-        }];
-        
-        //设置默认分享
-        [[UMSocialControllerService defaultControllerService] setShareText:content shareImage:[UIImage imageNamed:@"icon"] socialUIDelegate:self];        //设置分享内容和回调对象
-//        [UMSocialSnsPlatformManager getSocialPlatformWithName:UMShareToSina].snsClickHandler(self,[UMSocialControllerService defaultControllerService],YES);
-        
-        
-    }];
-    [alert addAction:shareAction];
-    
-    [self presentViewController:alert animated:YES completion:nil];
 }
-
 
 
 

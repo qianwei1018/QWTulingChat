@@ -7,9 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PersonalCenterViewController.h"
+@protocol myValuesDelegate<NSObject>
 
-@interface MainViewController : UIViewController
+- (void) valuesOfName:(NSString*)name;
 
+@end
+
+@interface MainViewController : UIViewController<myValuesDelegate>{
+    NSString *valuesOfName;
+    NSString *valuesOFimageName;
+}
+@property (weak, nonatomic)id<myValuesDelegate>delegate;
 
 
 

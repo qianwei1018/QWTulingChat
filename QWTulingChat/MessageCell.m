@@ -16,14 +16,14 @@
     UIButton     *_timeBtn;
     UIImageView *_iconView;
     UIButton    *_contentBtn;
+//    UILabel *_contentLabel;
 }
 
 @end
 
 @implementation MessageCell
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
-{
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         //#warning 必须先设置为clearColor，否则tableView的背景会被遮住
@@ -35,6 +35,7 @@
         _timeBtn.titleLabel.font = kTimeFont;
         _timeBtn.enabled = NO;
         [_timeBtn setBackgroundImage:[UIImage imageNamed:@"chat_timeline_bg.png"] forState:UIControlStateNormal];
+        [self.contentView addSubview:_timeBtn];
         
         // 2、创建头像
         _iconView = [[UIImageView alloc] init];
@@ -48,9 +49,17 @@
         _contentBtn.titleLabel.font = kContentFont;
         _contentBtn.titleLabel.numberOfLines = 0;
         
+        
         [self.contentView addSubview:_contentBtn];
         
-        [self.contentView addSubview:_timeBtn];
+//        _contentLabel = [[UILabel alloc] init];
+//        _contentLabel.userInteractionEnabled = YES;
+//        _contentLabel.textColor = [UIColor blackColor];
+//        _contentLabel.font = kContentFont;
+//        _contentLabel.numberOfLines = 0;
+//        [self.contentView addSubview:_contentLabel];
+        
+        
     }
     return self;
 }
@@ -74,9 +83,14 @@
     _contentBtn.contentEdgeInsets = UIEdgeInsetsMake(kContentTop, kContentLeft, kContentBottom, kContentRight);
     _contentBtn.frame = _messageFrame.contentF;
     
+    
+    
     if (message.type == MessageTypeMe) {
         _contentBtn.contentEdgeInsets = UIEdgeInsetsMake(kContentTop, kContentRight, kContentBottom, kContentLeft);
     }
+    
+    _messageContent = message.content;
+    
     
     UIImage *normal , *focused;
     //判断发送方
@@ -95,8 +109,38 @@
     }
     [_contentBtn setBackgroundImage:normal forState:UIControlStateNormal];
     [_contentBtn setBackgroundImage:focused forState:UIControlStateHighlighted];
-    
+
+//    [_contentLabel setBackgroundColor:[UIColor greenColor]];
 }
+
+//#pragma  mark - 点击事件
+//- (void) clickButton {
+//    _urlArray = [NSMutableArray arrayWithCapacity:5];
+//    NSString *urlString;
+//    
+//    NSError *error;
+//    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"http(s)?://([\\w-]+\\.)+[\\w-]+(/[\\w- ./?%&=]*)?" options:NSRegularExpressionCaseInsensitive error:&error];
+//    NSTextCheckingResult *result = [regex firstMatchInString:_messageContent options:0 range:NSMakeRange(0, [_messageContent length])];
+//    if (result) {
+//        urlString = [_messageContent substringWithRange:result.range];
+//        NSLog(@"%@",urlString);
+//        [_urlArray addObject:urlString];
+//        NSLog(@"%@",_urlArray);
+//        
+//        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"点击进入" preferredStyle:UIAlertControllerStyleActionSheet];
+//        UIAlertAction *cancleAction = [UIAlertAction actionWithTitle:@"关闭" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+//            
+//        }];
+//        [alert addAction:cancleAction];
+//        
+//        [_viewController presentViewController:alert animated:YES completion:^{
+//            
+//        }];
+//         
+//        
+//    }
+//}
+
 
 
 

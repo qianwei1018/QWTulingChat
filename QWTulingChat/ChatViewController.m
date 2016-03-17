@@ -15,11 +15,9 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *chatTableView;
 
-@property (weak, nonatomic) IBOutlet UISearchBar *searchBarText;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
 
-//@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
-//
-//@property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
 
 @property (strong, nonatomic) NSTimer *timer;
 
@@ -32,9 +30,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-//    [self ShowScrollView];
-//    
-//    self.timer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(changePageControl:) userInfo:nil repeats:YES];
+    [self ShowScrollView];
+    
+    self.navigationItem.hidesBackButton = YES;
+    self.navigationController.title = @"聊天";
+    
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(changePageControl:) userInfo:nil repeats:YES];
     
     
     self.chatTableView.delegate =self;
@@ -48,68 +49,60 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - 点击事件
+#pragma mark - 事件响应
 /**
- *  回收键盘
- *
- *  @param touches 点击
- *  @param event   回收键盘
+ *  添加scrollView
  */
-- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-//    [self.userNameTextField resignFirstResponder];
+- (void)ShowScrollView {
+    for (int i = 0; i < 4; i++) {
+        NSString *imgName = [NSString stringWithFormat:@"advertising%d",i+1];
+        UIImage *img = [UIImage imageNamed:imgName];
+        UIImageView *imgView = [[UIImageView alloc] initWithImage:img];
+        imgView.frame = CGRectMake(i*SCREEN_WIDTH, 0, SCREEN_WIDTH, SCREEN_HEIGHT/4);
+        [self.scrollView addSubview:imgView];
+        
+    }
+    // 设置scrollView的显示内容大小
+    self.scrollView.contentSize = CGSizeMake(4*SCREEN_WIDTH, SCREEN_HEIGHT/4);
+    self.scrollView.pagingEnabled = YES;
+    self.scrollView.delegate = self;
+    
 }
 
-///**
-// *  添加scrollView
-// */
-//- (void)ShowScrollView {
-//    for (int i = 0; i < 4; i++) {
-//        NSString *imgName = [NSString stringWithFormat:@"scrollView%d",i+1];
-//        UIImage *img = [UIImage imageNamed:imgName];
-//        UIImageView *imgView = [[UIImageView alloc] initWithImage:img];
-//        imgView.frame = CGRectMake(i*SCREEN_WIDTH, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-//        [self.scrollView addSubview:imgView];
-//        
-//    }
-//    // 设置scrollView的显示内容大小
-//    self.scrollView.contentSize = CGSizeMake(4*SCREEN_WIDTH, SCREEN_HEIGHT);
-//    self.scrollView.pagingEnabled = YES;
-//    self.scrollView.delegate = self;
-//    
-//}
-//
-//- (void)changePageControl:(NSTimer *)sender {
-//    self.pageControl.currentPage = (self.pageControl.currentPage+1)%self.pageControl.numberOfPages;
-//    
-//    [self changeScorllViewOffSet];
-//}
-//
-//- (void)changeScorllViewOffSet {
-//    self.scrollView.contentOffset = CGPointMake(self.pageControl.currentPage*SCREEN_WIDTH, 0);
-//}
-//
-//- (IBAction)changePage:(UIPageControl *)sender {
-//    [self changeScorllViewOffSet];
-//}
+- (void)changePageControl:(NSTimer *)sender {
+    self.pageControl.currentPage = (self.pageControl.currentPage+1)%self.pageControl.numberOfPages;
+    
+    [self changeScorllViewOffSet];
+}
 
-//#pragma mark - scroll view delegate
-//
-//- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
-//    [self.timer invalidate];
-//}
-//
-//- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
-//    NSLog(@"scrollViewWillEndDragging");
-//}
-//
-//- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-//    self.timer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(changePageControl:) userInfo:nil repeats:YES];
-//}
-//
-//- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-//    CGFloat page = (self.scrollView.contentOffset.x+SCREEN_WIDTH/2)/SCREEN_WIDTH;
-//    self.pageControl.currentPage = page;
-//}
+- (void)changeScorllViewOffSet {
+    self.scrollView.contentOffset = CGPointMake(self.pageControl.currentPage*SCREEN_WIDTH, 0);
+}
+
+
+- (IBAction)changePage:(UIPageControl *)sender {
+    [self changeScorllViewOffSet];
+}
+
+#pragma mark - scroll view delegate
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    [self.timer invalidate];
+}
+
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
+    NSLog(@"scrollViewWillEndDragging");
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(changePageControl:) userInfo:nil repeats:YES];
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    CGFloat page = (self.scrollView.contentOffset.x+SCREEN_WIDTH/2)/SCREEN_WIDTH;
+    self.pageControl.currentPage = page;
+}
+
 
 #pragma mark - table View data source
 //分组
@@ -123,7 +116,7 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return self.view.bounds.size.height/7;
+    return self.view.bounds.size.height/1.5;
 }
 /**
  *  table view cell
@@ -151,7 +144,6 @@
  */
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"开始聊天");
-    
     
     ChatBubbleViewController *chatBubbleVC = [self.storyboard instantiateViewControllerWithIdentifier:@"chatBubbleViewController"];
     

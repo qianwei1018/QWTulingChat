@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MainViewController.h"
 
-@interface PersonalCenterViewController : UIViewController
+
+
+@interface PersonalCenterViewController : UIViewController{
+    
+}
+
 
 @end

@@ -34,6 +34,7 @@
     self.pictureImageView.layer.cornerRadius = 40;  //设置图片圆角
     self.pictureImageView.layer.masksToBounds = YES;
     
+    
     [self initView];
 }
 
@@ -70,9 +71,6 @@
 - (IBAction)loginBtnClick:(UIButton *)sender {
     [self checkOfData];
     
-    
-    
-    
 }
 
 /**
@@ -91,12 +89,20 @@
     //判断 登陆信息
     if ( ([userName isEqualToString:[myDict valueForKey:@"userName"]]) && [password isEqualToString:[myDict valueForKey:@"password"]]) {
         NSLog(@"登陆成功");
+        
+        
         //页面跳转
         //1.连线（show  连接整个view）  设置线的Identifier
 //        [self performSegueWithIdentifier:@"ToTabBarController" sender:self];
         //2.使用StoryBoardId进行跳转 设置StoryBoardId
         ChatViewController *chatViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"chatViewController"];
         [self.navigationController pushViewController:chatViewController animated:YES];
+//        UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:chatViewController];
+//        [self presentViewController:navi
+//                           animated:YES completion:^{
+//            
+//        }];
+        
         
     } else if ([userName isEqualToString:@""]) {
         NSLog(@"用户名不能为空");

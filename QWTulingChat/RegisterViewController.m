@@ -227,12 +227,18 @@
             NSLog(@"pictureImageNameIndex:%@",pictureImageNameIndex);
             
             [self addAlertBox:@"恭喜你" message:@"注册成功" actionTitle:@"登陆"];
+            
+            
+            
         }
         // Documents目录
         NSString *documentsPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject;
         NSLog(@"path : %@", documentsPath);
     }
 }
+
+
+
 #pragma mark - 正则表达式
 /**
  *  正则表达式
@@ -282,6 +288,7 @@
     }
 }
 
+#pragma mark - 弹出框
 /**
  *  alert 警告框
  *
