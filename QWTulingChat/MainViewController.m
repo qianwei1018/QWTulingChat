@@ -10,6 +10,7 @@
 #import "ChatViewController.h"
 #import "ForgetPasswordViewController.h"
 
+
 @interface MainViewController ()
 /**
  *  图像
@@ -23,6 +24,8 @@
  *  密码
  */
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
+
+
 @end
 
 @implementation MainViewController
@@ -47,8 +50,10 @@
 - (void) initView {
     self.passwordTextField.secureTextEntry = YES;
     //默认数据
-    self.accountTextField.text = @"qqqqqq";
-    self.passwordTextField.text = @"qqqqqq";
+//    self.accountTextField.text = @"qqqqqq";
+//    self.passwordTextField.text = @"qqqqqq";
+    
+    
 }
 
 #pragma mark - 点击事件
@@ -89,7 +94,9 @@
     //判断 登陆信息
     if ( ([userName isEqualToString:[myDict valueForKey:@"userName"]]) && [password isEqualToString:[myDict valueForKey:@"password"]]) {
         NSLog(@"登陆成功");
-        
+        PersonalCenterViewController *person  = [[PersonalCenterViewController alloc] init];
+//        [self.navigationController pushViewController:person animated:YES];
+        person.userName2 = userName;
         
         //页面跳转
         //1.连线（show  连接整个view）  设置线的Identifier

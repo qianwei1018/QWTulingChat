@@ -37,10 +37,12 @@
     self.pictureImageView.layer.cornerRadius = 30;
     self.pictureImageView.layer.masksToBounds = YES;
     
+//    self.nameLabel.text = _userName2;
     
     [self initView];
     [self initData];
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -99,6 +101,11 @@
     }
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"你好");
+    
 }
 
 

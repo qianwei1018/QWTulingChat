@@ -64,6 +64,8 @@
     _messageField.leftViewMode = UITextFieldViewModeAlways;
     
     _messageField.delegate = self;
+    
+    
 }
 
 - (void) initData {
