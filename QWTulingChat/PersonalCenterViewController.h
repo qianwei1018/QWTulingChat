@@ -12,7 +12,8 @@
 
 
 @interface PersonalCenterViewController : UIViewController
-@property(strong, nonatomic) NSString *userName2;
+
+@property(strong, nonatomic) NSString *userName;
 
 
 @end

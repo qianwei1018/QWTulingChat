@@ -10,4 +10,7 @@
 
 @interface ForgetPasswordViewController : UIViewController
 
+
+@property (nonatomic, strong) NSString *accountMsg;
+
 @end

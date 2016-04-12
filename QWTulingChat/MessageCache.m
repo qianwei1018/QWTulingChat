@@ -66,14 +66,13 @@ static FMDatabaseQueue *_queue;
             
             NSLog(@"%@ ,%d",name,type);
             Message *msg = [[Message alloc]init];
-            msg.text = name;
+            msg.content = name;
             msg.type = type;
             
             MessageFrame *mf = [[MessageFrame alloc]init];
             mf.message = msg;
         
             [dicArray addObject:mf];
-            
         }
     }];
     

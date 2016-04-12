@@ -10,6 +10,12 @@
 #import "MyTulingHeader.h"
 
 @interface NewpasswordViewController ()
+
+/**
+ *  账号信息
+ */
+@property (weak, nonatomic) IBOutlet UILabel *accountMsg;
+
 /**
  *  新密码
  */
@@ -83,7 +89,7 @@
     
     
     //同步信息
-    [defaults synchronize];
+//    [defaults synchronize];
     }
 
     

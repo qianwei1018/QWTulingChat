@@ -10,15 +10,20 @@
 #import "MyTulingHeader.h"
 #import <SMS_SDK/SMSSDK.h>
 #import <UMSocial.h>
+
 #import "UMSocialSinaSSOHandler.h"
 #import "UMSocialWechatHandler.h"
+
+#import <iflyMSC/IFlyRecognizerViewDelegate.h>
+#import <iflyMSC/IFlyRecognizerView.h>
+#import <iflyMSC/IFlySpeechUtility.h>
+#import <iflyMSC/IFlyMSC.h>
 
 @interface AppDelegate ()
 
 @end
 
 @implementation AppDelegate
-
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
@@ -35,6 +40,30 @@
 //                                         RedirectURL:@"http://sns.whalecloud.com/sina2/callback"];
 //    //微信   AppID：wxd5d4138162361362
     [UMSocialWechatHandler setWXAppId:@"wxd5d4138162361362" appSecret:@"9abe7f50a793deca4c0b3cba815300c6" url:@"http://www.umeng.com/social"];
+    
+    
+    
+    //设置sdk的log等级，log保存在下面设置的工作路径中
+    [IFlySetting setLogFile:LVL_ALL];
+    
+    //打开输出在console的log开关
+    [IFlySetting showLogcat:YES];
+    
+    //设置sdk的工作路径
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+    NSString *cachePath = [paths objectAtIndex:0];
+    [IFlySetting setLogFilePath:cachePath];
+    
+//    //创建语音配置,appid必须要传入，仅执行一次则可
+//    NSString *initString = [[NSString alloc] initWithFormat:@"appid=%@",@"5708c023"];
+//    
+//    //所有服务启动前，需要确保执行createUtility
+//    [IFlySpeechUtility createUtility:initString];
+
+    
+//    //语音接口
+//    NSString *initstring = [[NSString alloc]initWithFormat:@"appid=%@",@"5708c023" ];
+//    [IFlySpeechUtility createUtility:initstring];
     
     return YES;
 }
@@ -60,5 +89,6 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
 
 @end

@@ -17,7 +17,6 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 
-
 @property (strong, nonatomic) NSMutableArray *dataArray1;
 @property (strong, nonatomic) NSMutableArray *dataArray2;
 @property (strong, nonatomic) NSMutableArray *pictureArray1;
@@ -37,7 +36,7 @@
     self.pictureImageView.layer.cornerRadius = 30;
     self.pictureImageView.layer.masksToBounds = YES;
     
-//    self.nameLabel.text = _userName2;
+    _nameLabel.text = _userName;
     
     [self initView];
     [self initData];

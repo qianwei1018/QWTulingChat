@@ -13,13 +13,24 @@
 #import "Message.h"
 #import "ContentInfo.h"
 #import "MessageCell.h"
+#import "MessageCache.h"
 #import <AFNetworking.h>
 #import <UMSocial.h>
 
-@interface ChatBubbleViewController ()<UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate,UMSocialUIDelegate>
+#import <iflyMSC/IFlyRecognizerViewDelegate.h>
+#import <iflyMSC/IFlyRecognizerView.h>
+#import <iflyMSC/IFlySpeechConstant.h>
+#import <iflyMSC/IFlyMSC.h>
+
+//不带界面的语音合成控件
+#import <iflyMSC/IFlySpeechSynthesizerDelegate.h>
+#import <iflyMSC/IFlySpeechSynthesizer.h>
+
+@interface ChatBubbleViewController ()<UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate,UMSocialUIDelegate,IFlyRecognizerViewDelegate>
 {
     NSMutableArray  *_allMessagesFrame;
     NSString *content;    //输出的值
+    IFlyRecognizerView *_iflyRecognizerView;
 }
 /**
  *  聊天界面主题
@@ -38,20 +49,43 @@
 
 @property (strong, nonatomic) NSMutableArray *chatBubbleInfo;
 
+
+@property (nonatomic, strong) NSMutableArray *messageFrames;
+
 @end
 
 @implementation ChatBubbleViewController
+
+//
+//-(NSMutableArray *)messageFrames
+//{
+//    if (_messageFrames == nil) {
+//        
+//        _messageFrames = [[NSMutableArray alloc]init];
+//        
+//    }
+//    return _messageFrames;
+//}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.bubbleTableView.delegate = self;
     self.bubbleTableView.dataSource = self;
+    
+    self.messageFrames = [MessageCache display];
+    
    
     [self initView];
     [self initData];
     
+    //button 添加手势
+    
+    UILongPressGestureRecognizer *longPGR = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longClick:)];
+    [_speakBtn addGestureRecognizer:longPGR];
+    
 }
+
 
 #pragma mark - 界面 数据 初始化
 - (void) initView {
@@ -84,6 +118,7 @@
         
         [_allMessagesFrame addObject:messageFrame];
     }
+    
     //通知中心
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyBoardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     
@@ -247,6 +282,10 @@
     mf.message = msg;
     
     [_allMessagesFrame addObject:mf];
+    
+    
+    //把数据存入数据库
+    [MessageCache addMessage:contentLabel type:msg.type];
 }
 
 /**
@@ -258,7 +297,7 @@
 - (void)addReplyMessageWithContent:(NSString *)contentLabel time:(NSString*)time {
     MessageFrame *mf = [[MessageFrame alloc] init];
     Message *msg = [[Message alloc] init];
-    
+    msg.time = time;
     msg.content = contentLabel;
     msg.time = time;
     msg.icon = @"icon01.png";
@@ -266,6 +305,9 @@
     mf.message = msg;
     
     [_allMessagesFrame addObject:mf];
+    
+    //把数据存入数据库
+    [MessageCache addMessage:msg.content type:msg.type];
     
     //刷新bubbleTableView
     [self.bubbleTableView reloadData];
@@ -277,8 +319,11 @@
  *  滑动至当前行
  */
 - (void)scrollToBottom {
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:_allMessagesFrame.count - 1 inSection:0];
-    [self.bubbleTableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+    if (_allMessagesFrame.count > 2) {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:_allMessagesFrame.count - 1 inSection:0];
+        [self.bubbleTableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+    }
+    
 }
 
 #pragma mark - tableView数据源方法
@@ -362,7 +407,7 @@
         UIAlertAction *entryAction;
         for (int i = 0; i < urlArray.count; i ++) {
             entryAction = [UIAlertAction actionWithTitle:urlArray[i] style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-               //调用Sarfari
+               //直接调用Sarfari
                 [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlArray[i]]];
                 
             }];
@@ -396,7 +441,67 @@
         [_messageField resignFirstResponder];
     }
     
+    
+    
 }
+
+- (void)longClick:(UILongPressGestureRecognizer *)gesture {
+    
+    if (gesture.state == UIGestureRecognizerStateBegan) {
+    
+    //创建语音配置,appid必须要传入，仅执行一次则可
+    NSString *initString = [[NSString alloc] initWithFormat:@"appid=%@",@"5708c023"];
+    
+    //所有服务启动前，需要确保执行createUtility
+    [IFlySpeechUtility createUtility:initString];
+    
+        _iflyRecognizerView = [[IFlyRecognizerView alloc]initWithCenter:self.view.center];
+        _iflyRecognizerView.delegate = self;
+        [_iflyRecognizerView setParameter:@"iat" forKey:[IFlySpeechConstant IFLY_DOMAIN]];
+         [_iflyRecognizerView setParameter:@"asrview.pcm" forKey:[IFlySpeechConstant ASR_AUDIO_PATH]];
+    
+        //    [_iflyrReco start];
+        //指定返回数据格式
+        //    [_iflyrReco setParameter:@"plain" forKey:[IFlySpeechConstant RESULT_TYPE]];
+        [_iflyRecognizerView start];
+
+        
+    } else if (gesture.state == UIGestureRecognizerStateEnded) {
+    }
+    
+    
+}
+
+/**
+ *  识别结果返回代理
+ *
+ *  @param resultArray 识别结果
+ *  @param isLast      最后一次结果
+ */
+-(void)onResult:(NSArray *)resultArray isLast:(BOOL)isLast
+{
+
+    NSMutableString *result = [[NSMutableString alloc] init];
+    NSDictionary *dic = [resultArray objectAtIndex:0];
+    for (NSString *key in dic) {
+        [result appendFormat:@"%@", key];
+    }
+    NSString *text;
+    text = [NSString stringWithFormat:@"%@%@",text, result];
+    [self addMessageWithContent:[NSString stringWithFormat:@"%@%@",text,result] time:nil];
+//    [self addMessageWithContent:result time:];
+//    [self inputMessage:result url:nil type:MessageTypeMe];
+}
+/**
+ *  识别会话错误返回代理
+ *
+ *  @param error 错误码
+ */
+-(void)onError:(IFlySpeechError *)error
+{
+    NSLog(@"error ------------ %@",error);
+}
+
 
 
 

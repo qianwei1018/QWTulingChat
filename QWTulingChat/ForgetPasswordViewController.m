@@ -12,6 +12,12 @@
 
 @interface ForgetPasswordViewController ()
 /**
+ *  账号信息
+ */
+@property (weak, nonatomic) IBOutlet UILabel *accountMag;
+
+
+/**
  *  手机号码框
  */
 @property (weak, nonatomic) IBOutlet UITextField *telNumTextField;
@@ -27,6 +33,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    _accountMag.text = _accountMsg;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -79,6 +87,7 @@
                             result:^(NSError *error) {
         if (!error) {
             NSLog(@"验证成功");
+            
             
             //跳转到修改密码界面
             NewpasswordViewController *newpasswordVC = [self.storyboard instantiateViewControllerWithIdentifier:@"newpasswordViewController"];

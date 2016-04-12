@@ -14,7 +14,6 @@
 
 
 @property (weak, nonatomic) IBOutlet UITableView *chatTableView;
-
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
 

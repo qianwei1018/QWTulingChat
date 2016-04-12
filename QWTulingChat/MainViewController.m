@@ -37,6 +37,9 @@
     self.pictureImageView.layer.cornerRadius = 40;  //设置图片圆角
     self.pictureImageView.layer.masksToBounds = YES;
     
+    _accountTextField.text = @"qqqqqq";
+    _passwordTextField.text = @"qqqqqq";
+    
     
     [self initView];
 }
@@ -96,7 +99,7 @@
         NSLog(@"登陆成功");
         PersonalCenterViewController *person  = [[PersonalCenterViewController alloc] init];
 //        [self.navigationController pushViewController:person animated:YES];
-        person.userName2 = userName;
+        person.userName = userName;
         
         //页面跳转
         //1.连线（show  连接整个view）  设置线的Identifier
@@ -104,11 +107,8 @@
         //2.使用StoryBoardId进行跳转 设置StoryBoardId
         ChatViewController *chatViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"chatViewController"];
         [self.navigationController pushViewController:chatViewController animated:YES];
-//        UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:chatViewController];
-//        [self presentViewController:navi
-//                           animated:YES completion:^{
-//            
-//        }];
+        
+        
         
         
     } else if ([userName isEqualToString:@""]) {
@@ -158,6 +158,9 @@
         //跳转到忘记密码界面
         ForgetPasswordViewController *forgetpw = [self.storyboard instantiateViewControllerWithIdentifier:@"forgetPasswordViewController"];
         [self.navigationController pushViewController:forgetpw animated:YES];
+        
+        forgetpw.accountMsg = userName;
+        
     }
 }
 /**
